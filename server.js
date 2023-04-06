@@ -25,3 +25,4 @@ mongodb.connect(
     }
   );
   
+  app.use(express.json());
