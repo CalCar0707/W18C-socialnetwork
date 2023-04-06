@@ -9,7 +9,7 @@ const port = 3001;
 // Connection string to local instance of MongoDB including database name-- INS#ERT DB NAME
 const connectionStringURI = `mongodb://127.0.0.1:27017/`;
 
-//DEclare variable to hold connection
+//Declare variable to hold connection
 let db;
 
 mongodb.connect(
