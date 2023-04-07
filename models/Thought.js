@@ -8,11 +8,11 @@ const thoughtSchema = new Schema(
             required: true,
             //must be between 1- 280 characters
         },
-        //createdAt: {
-            //date
-            // default value set to current timestamp
+        createdAt: {
+            type: Date,
+            default: Date.now,
             //use a getter method to format the timestamp on query
-        //},
+        },
         username: {
             type: String,
             required: true,
