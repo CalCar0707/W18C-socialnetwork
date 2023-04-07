@@ -1,5 +1,4 @@
 const express = require('express');
-
 const mongodb = require('mongodb').MongoClient;
 
 const app = express();
@@ -18,7 +17,7 @@ mongodb.connect(
     { useNewUrlParser: true, useUnifiedTopology: true },
     (err, client) => {
       // Use client.db() constructor to add new db instance
-      db = client.db();
+      //db = client.db();
       app.listen(port, () => {
         console.log(`Example app listening at http://localhost:${port}`);
       });
