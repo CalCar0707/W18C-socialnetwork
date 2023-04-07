@@ -19,3 +19,6 @@ router.get('/', (req, res) => {
 //Put to update a user by _id
 
 //Delete to remove a user by _id
+router.delete('/delee/:id', (req, res) => {
+    db.collection().deleteOne({_id: ObjectId(req.params.id) });
+});
