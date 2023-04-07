@@ -5,14 +5,14 @@ const thoughtSchema = require('./Thought');
 const userSchema = new Schema(
     {
         username: {
-            type: String
+            type: String,
             //unique
-            //required
+            required: true,
             //trimmed
         },
         email: {
-            type: String
-            //required
+            type: String,
+            required: true,
             //unique
             //must match valid email, mongoose matching validation
         },
