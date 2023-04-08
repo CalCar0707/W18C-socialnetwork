@@ -1,27 +1,16 @@
 const express = require('express');
-const mongodb = require('mongodb').MongoClient;
+const db = require('./config/connection');
+const routes = require('./routes');
 
 const app = express();
-const port = 3001;
+const PORT = 3001;
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(routes);
 
-// Connection string to local instance of MongoDB including database name-- INS#ERT DB NAME
-const connectionStringURI = `mongodb://127.0.0.1:27017/`;
-
-//Declare variable to hold connection
-let db;
-
-mongodb.connect(
-    connectionStringURI,
-    // Sets connection string parser and Server Discover and Monitoring engine to true and avoids warning
-    { useNewUrlParser: true, useUnifiedTopology: true },
-    (err, client) => {
-      // Use client.db() constructor to add new db instance
-      //db = client.db();
-      app.listen(port, () => {
-        console.log(`Example app listening at http://localhost:${port}`);
-      });
-    }
-  );
-  
-  app.use(express.json());
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+  });
+});

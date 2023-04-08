@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Thought } = require('../../models');
+const { User, Thought } = require('../models');
 
 // The '/users' endpoint
 module.exports = {
