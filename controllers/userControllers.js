@@ -5,7 +5,7 @@ const { User, Thought } = require('../models');
 module.exports = {
     //Get all users
     getUsers(req, res) {
-        User.find({})
+        User.find()
         .then((userData) => {
         res.json(userData);
     });
@@ -13,18 +13,21 @@ module.exports = {
 
 //Get a single user by _id and popluated thought and friend data
  getSingleUser(req, res) {
-    User.findOne({}), (err, result) => {
-        if (result) {
-            res.status(200).json(result);
-        } else {
-            console.log('Uh oh, something went wrong.');
-            res.status(500).json({ error: 'Something went wrong.' });
-        }
-    };
-},
+    User.findOne({ _id: req.params.postId})
+        .then((userData) => 
+        !userData
+            ? res.status(404).json({ message: 'No user with that ID.' })
+            : res.json(userData)
+        )
+        .catch((err) => res.status(500).json(err));
+    },
 
 //Post a new user
-
+createUser(req, res) {
+    User.create(req.body)
+    .then((dbUserData) => res.json(dbUserData))
+    .catch((err) => res.status(500).json(err));
+},
 //Put to update a user by _id
 
 //Delete to remove a user by _id
