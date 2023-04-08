@@ -5,7 +5,7 @@ const { User, Thought } = require('../models');
 module.exports = {
     //Get all thoughts
     getThoughts(req, res) {
-    Thought.find({})
+    Thought.find()
     .then((thoughtData) => {
         res.json(thoughtData);
     });
@@ -13,7 +13,7 @@ module.exports = {
 
 //Get a single thought by _id 
 getSingleThought(req, res) {
-    Thought.findOne({}), (err, result) => {
+    Thought.findOne({ _id: req.params.thoughtId }), (err, result) => {
         if (result) {
             res.status(200).json(result);
         } else {
@@ -23,7 +23,11 @@ getSingleThought(req, res) {
     };
 },
 //Post to create a new thought and push the created thougths _is to the users thoughts array field
-
+createThought(req, res) {
+    Thought.create(req.body)
+    .then((dbThoughtData) => res.json(dbThoughtData))
+    .catch((err) => res.status(500).json(err));
+},
 //Put to update a thought by _id
 
 //Delete to remove a thought by _id
