@@ -19,3 +19,5 @@ router.get('/', (req, res) => {
 //Put to update a thought by _id
 
 //Delete to remove a thought by _id
+
+module.exports = router;

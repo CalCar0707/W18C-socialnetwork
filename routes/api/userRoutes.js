@@ -6,4 +6,7 @@ const {
 } = require('../../controllers/userControllers');
 
 // /api/users
-router.route('/').get(getUsers).post
+router.route('/').get(getUsers);
+
+
+module.exports = router;
