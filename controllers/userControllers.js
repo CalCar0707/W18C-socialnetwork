@@ -17,8 +17,8 @@ module.exports = {
         if (result) {
             res.status(200).json(result);
         } else {
-            console.log('Uh oh, something went wrong');
-            res.status(500).json({ error: 'Something went wrong' });
+            console.log('Uh oh, something went wrong.');
+            res.status(500).json({ error: 'Something went wrong.' });
         }
     };
 },
@@ -35,8 +35,8 @@ deleteUser(req, res) {
                 res.status(200).json(result);
                 console.log(`Deleted: ${result}`);
             } else {
-                console.log('Uh oh, something went wrong');
-                res.status(500).json({ error: 'Something went wrong' });
+                console.log('Uh oh, something went wrong.');
+                res.status(500).json({ error: 'Something went wrong.' });
             }
         }
     )
