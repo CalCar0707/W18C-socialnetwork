@@ -25,9 +25,24 @@ getSingleThought(req, res) {
 //Post to create a new thought and push the created thoughts _id to the users thoughts array field
 createThought(req, res) {
     Thought.create(req.body)
-    .then((dbThoughtData) => res.json(dbThoughtData))
-    .catch((err) => res.status(500).json(err));
-},
+    .then((thought) => {
+        return User.findOneAndUpdate(
+            { _id: req.body.userId },
+            { $push: { thoughts: thought._id } },
+            { new: true }
+        );
+    })
+    .then((user) => 
+        !user
+        ? res
+            .status(404)
+            .json({ message: 'thought created, but no users with this ID'})
+            : res.json({ message: 'thought created' })
+            )
+            .catch((err) => {
+                console.error(err);
+            })
+    },
 
 //Put to update a thought by _id
 
