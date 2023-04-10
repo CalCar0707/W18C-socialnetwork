@@ -6,18 +6,18 @@ const userSchema = new Schema(
     {
         username: {
             type: String,
-            //unique
+            unique: true,
             required: true,
-            //trimmed
+            trim: true
         },
         email: {
             type: String,
             required: true,
-            //unique
+            unique: true,
             //must match valid email, mongoose matching validation
         },
         //thoughts: {
-            //arraya of _id values referncing thought model
+            //arraya of _id values referencing thought model
        // },
         //friends: {
             //array of values referencing the user model, self-reference

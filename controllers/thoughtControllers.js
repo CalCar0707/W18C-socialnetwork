@@ -22,12 +22,13 @@ getSingleThought(req, res) {
         }
     };
 },
-//Post to create a new thought and push the created thougths _is to the users thoughts array field
+//Post to create a new thought and push the created thoughts _id to the users thoughts array field
 createThought(req, res) {
     Thought.create(req.body)
     .then((dbThoughtData) => res.json(dbThoughtData))
     .catch((err) => res.status(500).json(err));
 },
+
 //Put to update a thought by _id
 
 //Delete to remove a thought by _id
