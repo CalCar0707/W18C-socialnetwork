@@ -13,7 +13,7 @@ module.exports = {
 
 //Get a single user by _id and popluated thought and friend data
  getSingleUser(req, res) {
-    User.findOne({ _id: req.params.postId})
+    User.findOne({ _id: req.params.userId})
         .then((userData) => 
         !userData
             ? res.status(404).json({ message: 'No user with that ID.' })

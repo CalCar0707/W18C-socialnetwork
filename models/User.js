@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const thoughtSchema = require('./Thought');
 
 //Schema to create user model
 const userSchema = new Schema(
@@ -16,20 +15,29 @@ const userSchema = new Schema(
             unique: true,
             //must match valid email, mongoose matching validation
         },
-        //thoughts: {
-            //arraya of _id values referencing thought model
-       // },
-        //friends: {
-            //array of values referencing the user model, self-reference
-        //}
+        thoughts: {
+            //arrays of _id values referencing thought model
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        },
+        // friends: {
+        //     //array of values referencing the user model, self-reference
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'User'
+        // }
     },
     {
         toJSON: {
-            getters: true,
             virtuals: true
         },
+        id: false,
     }
 );
+
+// userSchema.virtual('friendCount').get(function () {
+// //retrieves the length of the users friends array field on  query
+//     return this.friends.length;
+// })
 
 const User = model('user', userSchema);
 
