@@ -3,7 +3,7 @@ const { User, Thought } = require('../models');
 
 // The '/users' endpoint
 module.exports = {
-    //Get all users
+    //Get all users- WORKING
     getUsers(req, res) {
         User.find()
         .then((userData) => {

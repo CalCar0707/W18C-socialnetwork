@@ -3,7 +3,7 @@ const { User, Thought } = require('../models');
 
 //The '/thoughts' endpoint
 module.exports = {
-    //Get all thoughts
+    //Get all thoughts- WORKING
     getThoughts(req, res) {
     Thought.find()
     .then((thoughtData) => {
@@ -11,17 +11,17 @@ module.exports = {
     });
 },
 
-//Get a single thought by _id 
+//Get a single thought by _id- WORKING
 getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params.thoughtId }), (err, result) => {
-        if (result) {
-            res.status(200).json(result);
-        } else {
-            console.log('Uh oh, something went wrong.');
-            res.status(500).json({ error: 'Something went wrong.' });
-        }
-    };
+    Thought.findOne({ _id: req.params.thoughtId })
+        .then((thoughtData) => 
+        !thoughtData 
+            ? res.status(404).json({ message: 'No thought with that ID.' })
+            : res.json(thoughtData)
+            )
+            .catch((err) => res.status(500).json(err));
 },
+
 //Post to create a new thought and push the created thoughts _id to the users thoughts array field
 createThought(req, res) {
     Thought.create(req.body)
