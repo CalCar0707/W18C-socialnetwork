@@ -41,8 +41,5 @@ deleteUser(req, res) {
                 console.log('Uh oh, something went wrong.');
                 res.status(500).json({ error: 'Something went wrong.' });
             }
-        }
-    )
-    //db.collection().deleteOne({_id: ObjectId(req.params.id) });
-}
-}
+        })
+}};

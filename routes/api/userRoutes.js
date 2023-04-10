@@ -6,7 +6,7 @@ const {
     deleteUser
 } = require('../../controllers/userControllers');
 
-// /api/users
+// /api/users// both WORKING properly
 router.route('/').get(getUsers).post(createUser);
 
 // /api/users/:userId
