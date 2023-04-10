@@ -20,11 +20,11 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Thought'
         },
-        // friends: {
-        //     //array of values referencing the user model, self-reference
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'User'
-        // }
+         friends: {
+             //array of values referencing the user model, self-reference
+             type: Schema.Types.ObjectId,
+             ref: 'User'
+         },
     },
     {
         toJSON: {
@@ -34,10 +34,11 @@ const userSchema = new Schema(
     }
 );
 
-// userSchema.virtual('friendCount').get(function () {
-// //retrieves the length of the users friends array field on  query
-//     return this.friends.length;
-// })
+//b reaks get request for single id and sends error 500
+//  userSchema.virtual('friendCount').get(function () {
+//  //retrieves the length of the users friends array field on  query
+//      return this.friends.length;
+//  });
 
 const User = model('user', userSchema);
 
