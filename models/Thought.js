@@ -6,7 +6,8 @@ const thoughtSchema = new Schema(
         thoughtText: {
             type: String,
             required: true,
-            max_length: 280
+            min_length: 1,
+            max_length: 280,
         },
         createdAt: {
             type: Date,
@@ -21,7 +22,17 @@ const thoughtSchema = new Schema(
             //array of nested docs created with the reactionschema
         //}
     },
+    {
+        toJSON: {
+             virtuals: true,
+        },
+        id: false,
+    }
 );
+
+//thoughtSchema.virtual('reactionCount').get(function () {
+  //  return this.reactions.length;
+//});
 
 const Thought = model('thought', thoughtSchema);
 
