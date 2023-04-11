@@ -32,7 +32,7 @@ createUser(req, res) {
 
 //Delete to remove a user by _id
 deleteUser(req, res) {
-    User.findOneAndDelete({},
+    User.findOneAndDelete({ _id: req.params.userId },
         (err, result) => {
             if (result) {
                 res.status(200).json(result);

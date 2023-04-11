@@ -46,9 +46,10 @@ createThought(req, res) {
 
 //Put to update a thought by _id
 
+
 //Delete to remove a thought by _id
 deleteThought(req, res) {
-    Thought.findOneAndDelete({},
+    Thought.findOneAndDelete({ _id: req.params.thoughtId },
         (err, result) => {
             if (result) {
                 res.status(200).json(result);
