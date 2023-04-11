@@ -4,7 +4,8 @@ const {
     getSingleUser,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    addFriend
 } = require('../../controllers/userControllers');
 
 // /api/users// both WORKING properly
@@ -17,10 +18,10 @@ router
     .put(updateUser)
     .delete(deleteUser);
 
-// /api/users/:userId/friend/friendId
+// /api/users/:userId/friend/:friendId
 //post to add new friend to users friend list
 //delete to remove friend  from users friend list
-
+router.route('/:userId/friend/:friendId').post(addFriend);
 
 
 module.exports = router;
