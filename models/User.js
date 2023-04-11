@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema,  model } = require('mongoose');
 
 //Schema to create user model
 const userSchema = new Schema(
@@ -34,11 +34,11 @@ const userSchema = new Schema(
     }
 );
 
-//b reaks get request for single id and sends error 500
-//  userSchema.virtual('friendCount').get(function () {
-//  //retrieves the length of the users friends array field on  query
-//      return this.friends.length;
-//  });
+
+userSchema.virtual('friendCount').get(function () {
+  //retrieves the length of the users friends array field on  query
+      return this.friends.length;
+  });
 
 const User = model('user', userSchema);
 
