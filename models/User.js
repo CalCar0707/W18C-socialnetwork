@@ -15,16 +15,20 @@ const userSchema = new Schema(
             unique: true,
             //must match valid email, mongoose matching validation
         },
-        thoughts: {
+        thoughts: [
+            {
             //arrays of _id values referencing thought model
             type: Schema.Types.ObjectId,
             ref: 'Thought'
         },
-         friends: {
+    ],
+         friends: [
+            {
              //array of values referencing the user model, self-reference
              type: Schema.Types.ObjectId,
              ref: 'User'
          },
+        ],
     },
     {
         toJSON: {
