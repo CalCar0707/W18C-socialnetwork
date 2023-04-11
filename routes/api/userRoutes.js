@@ -19,7 +19,6 @@ router
     .delete(deleteUser);
 
 // /api/users/:userId/friend/:friendId
-//post to add new friend to users friend list
 //delete to remove friend  from users friend list
 router.route('/:userId/friend/:friendId').post(addFriend);
 
