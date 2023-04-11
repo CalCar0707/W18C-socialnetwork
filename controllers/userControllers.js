@@ -1,5 +1,4 @@
-const router = require('express').Router();
-const { User, Thought } = require('../models');
+const { User } = require('../models');
 
 // The '/users' endpoint
 module.exports = {
@@ -25,10 +24,26 @@ module.exports = {
 //Post a new user
 createUser(req, res) {
     User.create(req.body)
-    .then((dbUserData) => res.json(dbUserData))
+    .then((userData) => res.json(userData))
     .catch((err) => res.status(500).json(err));
 },
 //Put to update a user by _id
+updateUser(req, res) {
+    User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $set: req.body },
+        { runValidators: true, new: true}
+        )
+        .then((user) =>
+        !user
+            ? res.status(404).json({ message: 'No user with this ID.' })
+            : res.json(user)
+            )
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+},
 
 //Delete to remove a user by _id
 deleteUser(req, res) {

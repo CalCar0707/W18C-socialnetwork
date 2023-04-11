@@ -1,4 +1,3 @@
-//cconst router = require('express').Router();
 const { User, Thought } = require('../models');
 
 //The '/thoughts' endpoint
