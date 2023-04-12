@@ -9,15 +9,7 @@ This social media API allows the user to create an account, add their friends, p
 
 To use the application, a user will start the mongodb database  by typing `mongod` in the integrated terminal. Then the user will use the plus sign, to add a new git bash terminal, in which they will type the command `npm run start` to start the server. After this, the user can navigate to insomnia to use the gett, post, put, and delete routes needed to create their social media profile.
 
+Here is a link  to the walkthrough video to show functionality:
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
-
-
-## Features
-
-If your project has a lot of features, list them here.
+https://drive.google.com/file/d/1kqajyFE88cr82H5Y6iI2J3yPArbbutjC/view
 
