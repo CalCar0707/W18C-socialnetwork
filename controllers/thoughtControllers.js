@@ -90,11 +90,11 @@ deleteThought(req, res) {
             )
             .catch((err) => res.status(500).json(err));
     },
-//delete rection by reactionId value
+//delete reaction by reactionId value
     deleteReaction(req, res) {
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
-            { $pull: { reactions: req.params.reactionId }},
+            { $pull: { reactions: { reactionId: req.params.reactionId }}},
             { runValidators: true, new: true}
         )
         .then((thought) => 
